@@ -438,6 +438,29 @@ realm.write(() => {
     history: "First Known Use of Aaron \nNoun: before the 12th century \n\nHistory and Etymology for Aaron \nNoun: Late Latin, from Greek Aarōn, from Hebrew Ahărōn",
   });
 
+  const aaronic = realm.create('Word', {
+    name: "aaronic",
+    displayname: "aaronic",
+    plural: "",
+    tense: "",
+    noun: "",
+    article: "",
+    prefix: "",
+    suffix: "",
+    other: "",
+    abbreviation: "",
+    verb: "",
+    synonyms: "",
+    antonyms: "",
+    adjective: "Aa·​ron·​ic | \\ a-ˈrä-nik  , er-ˈä-\\ \n\n 1.  of or stemming from Aaron \n\n2. of or relating to the lower order of the Mormon priesthood",
+    adverb: "",
+    interjection: "",
+    preposition: "",
+    conjunction: "",
+    pronoun: "",
+    history: "First Known Use of Aaronic: 1652",
+  });
+
 
   
 
