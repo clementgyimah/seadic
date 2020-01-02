@@ -43,7 +43,7 @@ export default class Home extends Component{
             </TextInput>
             <View style={styles.buttonview}>
             <View><TouchableOpacity style={styles.buttonstyle} activeOpacity={10}
-            onPress={() => this.props.navigation.navigate('SearchScreen', {searchword: this.state.text})}>
+            onPress={() => this.props.navigation.navigate('SearchScreen', {searchword: this.state.text.toLowerCase()})}>
             <Text style={styles.buttontext}>Search</Text></TouchableOpacity></View>
             </View>
             </View>
