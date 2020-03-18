@@ -1,6 +1,7 @@
 //importing all necessary modules
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ScrollView, Dimensions } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 //requiring or import Realm database into the project
 const Realm = require('realm');
@@ -33,14 +34,12 @@ export default class SearchScreen extends Component {
       wordhistory: "",
       keyword: "",
       mainword: "",
-
     };
   }
 
   //the part of code to run first as soon as the app is mounted here
   componentDidMount() {
-    //creating a scheme (to the database) based on which some objects can be created according to in the database
-    //creating a scheme (to the database) based on which some objects can be created according to in the database
+    //creating a schema (to the database) based on which some objects can be created according to in the database
     const wordSchema = {
       name: 'Word',
       properties: {
@@ -1177,7 +1176,7 @@ export default class SearchScreen extends Component {
 
       //this part will catch any error that will be encountered in opening the database
       .catch(error => {
-        console.log('There is an error')
+        console.log('There was an error in opening the database.')
       })
 
   }
@@ -1382,12 +1381,33 @@ export default class SearchScreen extends Component {
     }
   }
 
+
+  //function to take care of adding a word in the bookmark
+  addToBookmark(word){
+    const bookmarkSchema = {
+      name: 'Bookmark',
+      properties:{
+        name: "string",
+      }
+    }
+    Realm.open({schema: [bookmarkSchema]})
+    .then(realm => {
+      realm.write(() => {
+        const bookmarkword = realm.create('Bookmark', {
+          name: word
+        })
+      })
+      realm.close();
+    })
+  }
+
   //the part of the code to run first(on condition that there is no componentDidMount etc...) when this file is accessed by the app
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.nameview}>
-          <Text style={styles.nametxt}> {this.state.worddisplayname}</Text>
+         <View style={styles.nametxtview}><Text style={styles.nametxt}> {this.state.worddisplayname}</Text></View>
+         <View style={styles.bookmark}><Icon.Button name="bookmark" size={30} color="white" backgroundColor="blue" /*onPress={this.addToBookmark(this.state.wordname)}*/ ></Icon.Button></View>
         </View>
         <View style={styles.scroll}>
           <ScrollView>
@@ -1446,16 +1466,24 @@ const styles = StyleSheet.create({
   nameview: {
     backgroundColor: "blue",
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: "center",
+    flexDirection: "row"
   },
   nametxt: {
     fontSize: 25,
     color: "white",
+   
   },
+  nametxtview: {
+    flex: 8,
+    justifyContent: "center",
+    alignItems: "center"
+  }
+  ,
   scroll: {
     backgroundColor: "yellow",
-    flex: 8
+    flex: 8,
+    padding: 10.0
   },
   indview: {
     paddingBottom: 15,
@@ -1470,6 +1498,11 @@ const styles = StyleSheet.create({
   deftxt: {
     fontSize: 15,
     color: "blue",
-  }
+  },
+  bookmark: {
+    flex: 2,
+    //justifyContent: "flex-start",
+    alignItems: "center",
+  },
 
 })
