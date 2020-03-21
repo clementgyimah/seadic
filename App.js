@@ -8,7 +8,6 @@ import BookmarkScreen from './components/BookmarkScreen';
 import DayWordScreen from './components/DayWordScreen';
 import DropdownScreen from './components/DropdownScreen';
 import HistoryScreen from './components/HistoryScreen';
-import RandomWordScreen from './components/RandomWordScreen';
 
 
 //creating a stack navigator and setting all screens as its children
@@ -30,9 +29,6 @@ const AppNavigator = createStackNavigator({
   },
   HistoryScreen: {
     screen: HistoryScreen
-  },
-  RandomWordScreen: {
-    screen: RandomWordScreen
   },
 },
 //setting the first screen to display as Home from createStackNavigator

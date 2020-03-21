@@ -8,6 +8,10 @@
         "source": "/home/dj-clemo/.gradle/caches/transforms-2/files-2.1/5fe04970bacf76b6834d0189b7c7bfc6/res/drawable-mdpi-v4/notification_bg_normal.9.png"
     },
     {
+        "merged": "/home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/build/intermediates/res/merged/debug/mipmap-ldpi_ic_launcher.png.flat",
+        "source": "/home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/src/main/res/mipmap-ldpi/ic_launcher.png"
+    },
+    {
         "merged": "/home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/build/intermediates/res/merged/debug/drawable_abc_item_background_holo_dark.xml.flat",
         "source": "/home/dj-clemo/.gradle/caches/transforms-2/files-2.1/615b0655b72924b03962920372107d39/res/drawable/abc_item_background_holo_dark.xml"
     },
@@ -322,6 +326,10 @@
     {
         "merged": "/home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
         "source": "/home/dj-clemo/.gradle/caches/transforms-2/files-2.1/615b0655b72924b03962920372107d39/res/drawable-xhdpi-v4/abc_btn_radio_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "/home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/build/intermediates/res/merged/debug/mipmap-ldpi_ic_launcher_round.png.flat",
+        "source": "/home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/src/main/res/mipmap-ldpi/ic_launcher_round.png"
     },
     {
         "merged": "/home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
@@ -1340,12 +1348,12 @@
         "source": "/home/dj-clemo/.gradle/caches/transforms-2/files-2.1/615b0655b72924b03962920372107d39/res/color/abc_secondary_text_material_light.xml"
     },
     {
-        "merged": "/home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_notification_bg_normal_pressed.9.png.flat",
-        "source": "/home/dj-clemo/.gradle/caches/transforms-2/files-2.1/5fe04970bacf76b6834d0189b7c7bfc6/res/drawable-hdpi-v4/notification_bg_normal_pressed.9.png"
-    },
-    {
         "merged": "/home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/build/intermediates/res/merged/debug/anim_abc_popup_exit.xml.flat",
         "source": "/home/dj-clemo/.gradle/caches/transforms-2/files-2.1/615b0655b72924b03962920372107d39/res/anim/abc_popup_exit.xml"
+    },
+    {
+        "merged": "/home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_notification_bg_normal_pressed.9.png.flat",
+        "source": "/home/dj-clemo/.gradle/caches/transforms-2/files-2.1/5fe04970bacf76b6834d0189b7c7bfc6/res/drawable-hdpi-v4/notification_bg_normal_pressed.9.png"
     },
     {
         "merged": "/home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
