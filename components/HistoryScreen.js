@@ -18,9 +18,13 @@ export default class BookmarkScreen extends Component {
     }
   }
 
-  //setting the navigation options of the navigations that will be done in the app. Example: header title.
-  static navigationOptions= {
+  //setting the navigation options for this page. Example: header title.
+  static navigationOptions = ({navigation}) => {
+    return {
     headerTitle: "Seadic",
+    headerLeft: <Icon.Button 
+      name="arrowleft" size={20} color="white" backgroundColor="#2F1976" onPress={() => navigation.goBack()}
+    ></Icon.Button>,
     headerStyle: {
       backgroundColor: "#2F1976"
     },
@@ -29,6 +33,7 @@ export default class BookmarkScreen extends Component {
       fontWeight: 'bold',
       paddingLeft: (Dimensions.get('window').width)/10
     },
+  }
   }
 
   //the part of code to run first as soon as the app is mounted here
@@ -41,18 +46,18 @@ export default class BookmarkScreen extends Component {
       }
     }
 
-    //opening the database and creating or populating it with objects(words in this case)
+    //opening the database based on the history schema and adding all the words in the history database to a state array so that they can then be displayed on the history screen
     Realm.open({
       schema: [historySchema]
     })
       .then(realm => {
         historyarraymaker = [];
         historydata = realm.objects('History');
-        //logic to put the data (from the bookmark database) into an array of objects to be able to use it for the flatlist in the client side ui
+        //logic to put the data (from the history database) into an array of objects to be able to use it for the flatlist in the client side UI
         for (var i = 0; i < historydata.length; i++) {
           historyarraymaker.push({ word: historydata[i].name })
         }
-  //setting the value of a global state array (of objects) called 'bookarray' to a local array (of objects) called 'bookarraymaker'
+  //setting the value of a global state array (of objects) called 'historyarray' to a local array (of objects) called 'historyarraymaker'
         this.setState({
           historyarray: historyarraymaker,
         })
@@ -67,7 +72,7 @@ export default class BookmarkScreen extends Component {
   
 
   removeHandler(word){
-  
+  //This part takes care of removing a word from the history list on the screen and also making sure it is removed from the history database
    for(var i=0; i<this.state.historyarray.length; i++){
      if(this.state.historyarray[i].word == word){
        var statearray = this.state.historyarray;
@@ -90,13 +95,13 @@ export default class BookmarkScreen extends Component {
           keyExtractor={(item, index) => item.word}
           renderItem={({ item }) => (
             <View style={styles.main}>
-              <TouchableHighlight style={styles.container} onPress={() => this.props.navigation.navigate("SearchScreen", { searchword: item.word })} >
+              <TouchableHighlight underlayColor="blue" style={styles.container} onPress={() => this.props.navigation.navigate("SearchScreen", { searchword: item.word })} >
                 <View>
                   <Text style={styles.nametxt}>{item.word}</Text>
                 </View>
               </TouchableHighlight>
               <View style={styles.removebutton}>
-                <Icon.Button name="close" size={30} color="#33C3FF" backgroundColor="white" onPress={()=> this.removeHandler(item.word)}></Icon.Button>
+                <Icon.Button name="close" size={30} color="red" backgroundColor="white" onPress={()=> this.removeHandler(item.word)}></Icon.Button>
               </View>
             </View>
           )}
@@ -106,7 +111,7 @@ export default class BookmarkScreen extends Component {
   }
 }
 
-//StyleSheet to take care of all styling in the app
+//StyleSheet to take care of all styling in this page
 const styles = StyleSheet.create({
   main: {
     flexDirection: "row",

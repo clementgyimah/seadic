@@ -1,6 +1,6 @@
 var Realm = require('realm');
 
-//function to take care of adding a word in the bookmark
+//function to take care of adding a word to the bookmark database
 exports.bookmarkadd = function bookmarkadd(word){
     //the schema or structure of the Bookmark data being stored
     const bookmarkSchema = {
@@ -9,7 +9,7 @@ exports.bookmarkadd = function bookmarkadd(word){
           name: "string",
         }  
       }
-      //opening the database of the bookmark schema
+      //opening the database based on the bookmark schema
       Realm.open({ schema: [bookmarkSchema] })
       .then (realm => {
         var bookwords = realm.objects('Bookmark')
@@ -27,7 +27,7 @@ exports.bookmarkadd = function bookmarkadd(word){
           if (bookwords[i].name == word) {
               break;
           }
-          //logic to check and store the word if we have reach the end of the boorkmark data list without finding the word already in the list
+          //logic to check and store the word if we have reach the end of the bookmark data list without finding the word already in the list
           else if(i == (bookwords.length - 1)){
             realm.write(() => {
               const bookmarkword = realm.create('Bookmark', {
@@ -48,6 +48,7 @@ exports.bookmarkadd = function bookmarkadd(word){
 }
 
 
+//function to take care of removing a word from the bookmark database
 exports.bookmarkdelete = function bookmarkdelete(word){
     //the schema or structure of the Bookmark data being stored
     const bookmarkSchema = {

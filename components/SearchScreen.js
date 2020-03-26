@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ScrollView, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import IconThin from 'react-native-vector-icons/AntDesign';
 var bookmarkStore = require('./bookmarkStore');
 var historyStore = require('./historyStore');
 
@@ -39,9 +40,13 @@ export default class SearchScreen extends Component {
     };
   }
 
-  //setting the navigation options of the navigations that will be done in the app. Example: header title.
-  static navigationOptions= {
+  //setting the navigation options for this page. Example: header title.
+  static navigationOptions = ({navigation}) => {
+    return{
     headerTitle: "Seadic",
+    headerLeft: <IconThin.Button 
+      name="arrowleft" size={20} color="white" backgroundColor="#2F1976" onPress={() => navigation.goBack()}
+    ></IconThin.Button>,
     headerStyle: {
       backgroundColor: "#2F1976"
     },
@@ -50,6 +55,7 @@ export default class SearchScreen extends Component {
       fontWeight: 'bold',
       paddingLeft: (Dimensions.get('window').width)/10
     },
+    }
   }
 
   //the part of code to run first as soon as the app is mounted here
@@ -98,8 +104,9 @@ export default class SearchScreen extends Component {
         //setting a local variable called 'keyword' to the value of the global state variable called 'keyword'
         keyword = this.state.keyword
 
+        //setting a local variable called 'historywords' to the data in the history database
         var historywords = realm.objects('History')
-        //condition to check if there is nothing in the bookmark database, then we store what is coming as the first word in it
+        //condition to check if there is nothing in the history database, then we store what is coming as the first word in it
         if(historywords.length == 0){
         realm.write(() => {
           const historyword = realm.create('History', {
@@ -107,13 +114,13 @@ export default class SearchScreen extends Component {
           })
         })
       }
-      //else if there is some data already in the bookmark database, then we use for loop to check if the word to be stored is not already in the bookmark database
+      //else if there is some data already in the history database, then we use for loop to check if the word to be stored is not already in the history database
        else{
         for(var i = 0; i < historywords.length; i++){
           if (historywords[i].name == keyword) {
               break;
           }
-          //logic to check and store the word if we have reach the end of the boorkmark data list without finding the word already in the list
+          //logic to check and store the word if we have reach the end of the history data list without finding the word already in the list
           else if(i == (historywords.length - 1)){
             realm.write(() => {
               const historymarkword = realm.create('History', {
@@ -145,12 +152,10 @@ export default class SearchScreen extends Component {
         console.log('There was an error in opening the database.')
       })
 
-      //historyStore.historyadd(this.state.keyword);
-
   }
 
 
-  //creating different functions (<functionname>decide ) to decide whether some properties of some words should be shown on the screen or not
+  //creating different functions (<functionname>decide ) to decide whether some properties of some words should be shown on the "Search Screen" or not
   otherdecide() {
     if (this.state.wordother !== '') {
       return (
@@ -407,7 +412,7 @@ export default class SearchScreen extends Component {
   }
 }
 
-//StyleSheet to take care of all styling in the app
+//StyleSheet to take care of all styling in this page
 const styles = StyleSheet.create({
   container: {
     flex: 1,

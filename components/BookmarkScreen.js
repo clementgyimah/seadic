@@ -18,9 +18,13 @@ export default class BookmarkScreen extends Component {
     }
   }
 
-  //setting the navigation options of the navigations that will be done in the app. Example: header title.
-  static navigationOptions= {
+  //setting the navigation options for this page. Example: header title.
+  static navigationOptions=({navigation}) => {
+    return{
     headerTitle: "Seadic",
+    headerLeft: <Icon.Button 
+      name="arrowleft" size={20} color="white" backgroundColor="#2F1976" onPress={() => navigation.goBack()}
+    ></Icon.Button>,
     headerStyle: {
       backgroundColor: "#2F1976"
     },
@@ -29,6 +33,8 @@ export default class BookmarkScreen extends Component {
       fontWeight: 'bold',
       paddingLeft: (Dimensions.get('window').width)/10
     },
+  }
+
   }
 
   //the part of code to run first as soon as the app is mounted here
@@ -41,14 +47,14 @@ export default class BookmarkScreen extends Component {
       }
     }
 
-    //opening the database and creating or populating it with objects(words in this case)
+    //opening the database based on the bookmark schema and adding all the words in the bookmark database to a state array so that they can then be displayed on the bookmark screen
     Realm.open({
       schema: [bookmarkSchema]
     })
       .then(realm => {
         bookarraymaker = [];
         bookdata = realm.objects('Bookmark');
-        //logic to put the data (from the bookmark database) into an array of objects to be able to use it for the flatlist in the client side ui
+        //logic to put the data (from the bookmark database) into the state array of objects to be able to use it for the flatlist in the client side UI
         for (var i = 0; i < bookdata.length; i++) {
           bookarraymaker.push({ word: bookdata[i].name })
         }
@@ -67,7 +73,7 @@ export default class BookmarkScreen extends Component {
   
 
   removeHandler(word){
-  
+  //This part takes care of removing a word from the bookmark list on the screen and also making sure it is removed from the bookmark database
    for(var i=0; i<this.state.bookarray.length; i++){
      if(this.state.bookarray[i].word == word){
        var statearray = this.state.bookarray;
@@ -90,13 +96,13 @@ export default class BookmarkScreen extends Component {
           keyExtractor={(item, index) => item.word}
           renderItem={({ item }) => (
             <View style={styles.main}>
-              <TouchableHighlight style={styles.container} onPress={() => this.props.navigation.navigate("SearchScreen", { searchword: item.word })} >
+              <TouchableHighlight underlayColor="blue" style={styles.container} onPress={() => this.props.navigation.navigate("SearchScreen", { searchword: item.word })} >
                 <View>
                   <Text style={styles.nametxt}>{item.word}</Text>
                 </View>
               </TouchableHighlight>
               <View style={styles.removebutton}>
-                <Icon.Button name="close" size={30} color="#33C3FF" backgroundColor="white" onPress={()=> this.removeHandler(item.word)}></Icon.Button>
+                <Icon.Button name="close" size={30} color="red" backgroundColor="white" onPress={()=> this.removeHandler(item.word)}></Icon.Button>
               </View>
             </View>
           )}
@@ -106,7 +112,7 @@ export default class BookmarkScreen extends Component {
   }
 }
 
-//StyleSheet to take care of all styling in the app
+//StyleSheet to take care of all styling in this page
 const styles = StyleSheet.create({
   main: {
     flexDirection: "row",

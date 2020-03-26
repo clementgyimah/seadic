@@ -1,3 +1,4 @@
+//The code below takes care of putting all the words in the dictionary
 var Realm = require('realm');
 
 exports.dicwords = function dicwords(){

@@ -5,9 +5,8 @@ import { createStackNavigator, createAppContainer, createDrawerNavigator } from 
 import Home from './components/Home';
 import SearchScreen from './components/SearchScreen'
 import BookmarkScreen from './components/BookmarkScreen';
-import DayWordScreen from './components/DayWordScreen';
-import DropdownScreen from './components/DropdownScreen';
 import HistoryScreen from './components/HistoryScreen';
+import DrawerPage from './components/DrawerPage';
 
 
 //creating a stack navigator and setting all screens as its children
@@ -21,12 +20,6 @@ const AppNavigator = createStackNavigator({
   BookmarkScreen: {
     screen: BookmarkScreen
   },
-  DayWordScreen: {
-    screen: DayWordScreen
-  },
-  DropdownScreen: {
-    screen: DropdownScreen
-  },
   HistoryScreen: {
     screen: HistoryScreen
   },
@@ -36,15 +29,20 @@ const AppNavigator = createStackNavigator({
   initialRouteName: 'Home'
 });
 
+
 //creating a drawer navigator and using AppNavigator(which creates stack navigator) as its child
 const DrawerNavigator = createDrawerNavigator({
   DrawerHome:{
     screen: AppNavigator
   }
 },
-//setting the first screen to display as DrawerHome from the createDrawerNavigator
+//setting other properties of the Drawer like first screen to display and the content of the Drawer
 {
-initialRouteName: 'DrawerHome'
+  initialRouteName: 'DrawerHome',
+  contentComponent: DrawerPage,
+  drawerType:"back",
+  //hideStatusBar: true,
+  
 }
 )
 
