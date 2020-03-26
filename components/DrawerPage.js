@@ -56,6 +56,136 @@ export default class DrawerPage extends Component {
           })
     }
 
+    dayword() {
+        //the schema or structure of the "Word of the Day" data and "Words" data being stored
+        const dayWordSchema = {
+            name: 'DayWord',
+            properties: {
+                name: "string",
+                year: "int",
+                month: "int",
+                day: "int"
+            }
+        }
+
+        const wordSchema = {
+            name: 'Word',
+            properties: {
+                name: 'string',
+                displayname: 'string',
+                plural: 'string',
+                tense: 'string',
+                other: 'string',
+                abbreviation: 'string',
+                article: 'string',
+                prefix: 'string',
+                suffix: 'string',
+                noun: 'string',
+                verb: 'string',
+                synonyms: 'string',
+                antonyms: 'string',
+                adjective: 'string',
+                adverb: 'string',
+                interjection: 'string',
+                preposition: 'string',
+                conjunction: 'string',
+                pronoun: 'string',
+                history: 'string',
+            }
+        }
+
+        //opening the database based on the Words schema and the Word of the day schema
+        Realm.open({ schema: [wordSchema, dayWordSchema] })
+            .then(realm => {
+                var dayword = realm.objects('DayWord');
+                var currentyear = new Date().getFullYear();
+                var currentmonth = new Date().getMonth();
+                var currentday = new Date().getDay();
+                //condition to check if there is nothing in the Word of the Day database, then we store what is coming as the Word of the Day in it
+                if (dayword.length == 0) {
+
+                    var wordlength = realm.objects('Word').length;
+                    var minvalue = 0;
+                    var maxvalue = wordlength;
+                    var randomvalue = Math.floor(Math.random() * (maxvalue - minvalue + 1)) + 1;
+                    var randomvaluegenerated = realm.objects('Word')[randomvalue].name
+                    realm.write(() => {
+                        const daywordvalue = realm.create('DayWord', {
+                            name: randomvaluegenerated,
+                            year: currentyear,
+                            month: currentmonth,
+                            day: currentday
+                        })
+                    })
+                    var randomword = new Promise((resolve, reject) => {
+                        resolve(randomvaluegenerated)
+                    })
+                    randomword.then((word) => {
+                        this.props.navigation.navigate("SearchScreen", { searchword: word })
+                    })
+
+                    randomword.catch(error => {
+                        console("There was an error when trying to resolve a promise of storing new Word of the Day and assigning Random Word from database schema(Words) to a variable called randomword");
+                    })
+
+                }
+                // handler for the condition of either maintaining the Word of the Day (if day has not ended) or changing the word of the day (if day has ended)
+                else {
+
+                    var databaseyear = realm.objects("DayWord")[0].year;
+                    var databasemonth = realm.objects("DayWord")[0].month;
+                    var databaseday = realm.objects("DayWord")[0].day;
+
+                    //check if day has not changed or ended
+                    if (currentyear == databaseyear && currentmonth == databasemonth && currentday == databaseday) {
+                        var databaseword = new Promise((resolve, reject) => {
+                            resolve(realm.objects("DayWord")[0].name)
+                        })
+                        databaseword.then((value) => {
+                            this.props.navigation.navigate("SearchScreen", { searchword: value })
+                        })
+                        databaseword.catch(error => {
+                            console("There was an error when trying to resolve a promise of assigning the Word of the Day from database words to a variable called databaseword");
+                        })
+                    //else handler for day has changed or ended
+                    }
+                    else {
+                        var wordlength = realm.objects('Word').length;
+                        var minvalue = 0;
+                        var maxvalue = wordlength;
+                        var randomvalue = Math.floor(Math.random() * (maxvalue - minvalue + 1)) + 1;
+                        var mainvalue = realm.objects('Word')[randomvalue].name
+                        realm.write(() => {
+                            realm.objects("DayWord")[0].name = mainvalue
+                            realm.objects("DayWord")[0].year = currentyear
+                            realm.objects("DayWord")[0].month = currentmonth
+                            realm.objects("DayWord")[0].day = currentday
+                        })
+                        var randomword = new Promise((resolve, reject) => {
+                            resolve(mainvalue)
+                        })
+                        randomword.then((word) => {
+                            this.props.navigation.navigate("SearchScreen", { searchword: word })
+                        })
+
+                        randomword.catch(error => {
+                            console("There was an error when trying to resolve a promise of updating Word of the Day and assigning Random Word from database schema(Words) to a variable called randomword");
+                        })
+
+                    }
+
+                }
+                realm.close();
+
+            }
+            )
+            //this part will catch any error that will be encountered in opening the database
+            .catch(error => {
+                console.log('There was an error in opening the database.')
+            })
+
+    }
+
     //the part of the code to run first(on condition that there is no componentDidMount etc...) when this file is accessed by the app
     render() {
         return (
@@ -88,10 +218,10 @@ export default class DrawerPage extends Component {
                         </View>
 
                         <View style={styles.touchableview}>
-                            <TouchableOpacity  activeOpacity={50} style={styles.touchabledrawericon} onPress={() => this.props.navigation.navigate("DayWordScreen")}>
+                            <TouchableOpacity  activeOpacity={50} style={styles.touchabledrawericon} onPress={() => this.dayword()}>
                                 <Icon name="calendar" size={20}></Icon>
                             </TouchableOpacity>
-                            <TouchableOpacity activeOpacity={50} style={this.touchabledrawertxt} onPress={() => this.props.navigation.navigate("DayWordScreen")}>
+                            <TouchableOpacity activeOpacity={50} style={this.touchabledrawertxt} onPress={() => this.dayword()}>
                                 <Text style={styles.drawertxt}>Word of the Day</Text>
                             </TouchableOpacity>
                         </View>
