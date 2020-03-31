@@ -1,4 +1,4 @@
-#Wed Mar 25 12:56:44 GMT 2020
+#Tue Mar 31 01:19:13 GMT 2020
 base.0=/home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/build/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex

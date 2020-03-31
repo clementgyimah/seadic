@@ -4,7 +4,7 @@
             "outputFile": "/home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-it/values-it.xml",
             "map": [
                 {
-                    "source": "/home/dj-clemo/.gradle/caches/transforms-2/files-2.1/5fe04970bacf76b6834d0189b7c7bfc6/res/values-it/values-it.xml",
+                    "source": "/home/dj-clemo/.gradle/caches/transforms-2/files-2.1/245d8138902563900741aae1ed86ae26/res/values-it/values-it.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/home/dj-clemo/.gradle/caches/transforms-2/files-2.1/615b0655b72924b03962920372107d39/res/values-it/values-it.xml",
+                    "source": "/home/dj-clemo/.gradle/caches/transforms-2/files-2.1/a0cd66f74a506a7b26e934c162fbc05f/res/values-it/values-it.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
