@@ -7,55 +7,6 @@ var Realm = require('realm');
 
 export default class DrawerPage extends Component {
 
-    //This function takes care of generating a random word from the words in the database and display the meaning of the word using the search screen
-    generateRandomWord(){
-
-        const wordSchema = {
-            name: 'Word',
-            properties: {
-              name: 'string',
-              displayname: 'string',
-              plural: 'string',
-              tense: 'string',
-              other: 'string',
-              abbreviation: 'string',
-              article: 'string',
-              prefix: 'string',
-              suffix: 'string',
-              noun: 'string',
-              verb: 'string',
-              synonyms: 'string',
-              antonyms: 'string',
-              adjective: 'string',
-              adverb: 'string',
-              interjection: 'string',
-              preposition: 'string',
-              conjunction: 'string',
-              pronoun: 'string',
-              history: 'string',
-            }
-          }
-          Realm.open({ schema: [wordSchema] })
-          .then(realm => {
-            var wordlength = realm.objects('Word').length;
-            var minvalue = 0;
-            var maxvalue = wordlength;
-            randomvalue = Math.floor(Math.random() * (30 - minvalue + 1 )) + 1;
-            
-            var randint =  new Promise((resolve, reject) => {
-                resolve(realm.objects('Word')[randomvalue].name)
-            })
-            randint.then( (word) => {this.props.navigation.navigate("SearchScreen", { searchword: word })} )
-            randint.catch(error => {
-                console("There was an error when trying to resolve a promise of assigning random word from database words to a variable called randint");
-            })
-        realm.close();  
-        })
-          .catch(error => {
-            console.log('There was an error in opening the database.')
-          })
-    }
-
     dayword() {
         //the schema or structure of the "Word of the Day" data and "Words" data being stored
         const dayWordSchema = {
@@ -223,15 +174,6 @@ export default class DrawerPage extends Component {
                             </TouchableOpacity>
                             <TouchableOpacity activeOpacity={50} style={this.touchabledrawertxt} onPress={() => this.dayword()}>
                                 <Text style={styles.drawertxt}>Word of the Day</Text>
-                            </TouchableOpacity>
-                        </View>
-
-                        <View style={styles.touchableview}>
-                            <TouchableOpacity activeOpacity={50} style={styles.touchabledrawericon} onPress={() => this.generateRandomWord()}>
-                                <Icon name="random" size={20}></Icon>
-                            </TouchableOpacity>
-                            <TouchableOpacity activeOpacity={50} style={this.touchabledrawertxt} onPress={() => this.generateRandomWord()}>
-                                <Text style={styles.drawertxt}>Random Word</Text>
                             </TouchableOpacity>
                         </View>
 
