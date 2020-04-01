@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Mar 31 03:37:20 GMT 2020
+#Wed Apr 01 02:30:11 GMT 2020
 56.path=lib/arm64-v8a/libjscexecutor.so
 5.base=/home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/build/intermediates/transforms/mergeJniLibs/release/0
 42.base=/home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/build/intermediates/merged_assets/release/out

@@ -1,10 +1,10 @@
-# Referenced at /home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/build/intermediates/merged_manifests/release/arm64-v8a/AndroidManifest.xml:13
+# Referenced at /home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/build/intermediates/merged_manifests/release/AndroidManifest.xml:13
 -keep class androidx.core.app.CoreComponentFactory { <init>(); }
-# Referenced at /home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/build/intermediates/merged_manifests/release/arm64-v8a/AndroidManifest.xml:32
+# Referenced at /home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/build/intermediates/merged_manifests/release/AndroidManifest.xml:32
 -keep class com.facebook.react.devsupport.DevSettingsActivity { <init>(); }
-# Referenced at /home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/build/intermediates/merged_manifests/release/arm64-v8a/AndroidManifest.xml:21
+# Referenced at /home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/build/intermediates/merged_manifests/release/AndroidManifest.xml:21
 -keep class com.seadic.MainActivity { <init>(); }
-# Referenced at /home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/build/intermediates/merged_manifests/release/arm64-v8a/AndroidManifest.xml:13
+# Referenced at /home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/build/intermediates/merged_manifests/release/AndroidManifest.xml:13
 -keep class com.seadic.MainApplication { <init>(); }
 # Referenced at /home/dj-clemo/.gradle/caches/transforms-2/files-2.1/a0cd66f74a506a7b26e934c162fbc05f/res/layout/abc_alert_dialog_title_material.xml:56
 # Referenced at /home/dj-clemo/.gradle/caches/transforms-2/files-2.1/a0cd66f74a506a7b26e934c162fbc05f/res/layout/abc_alert_dialog_material.xml:52
