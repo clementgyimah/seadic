@@ -185,6 +185,24 @@ export default class DrawerPage extends Component {
                                 <Text style={styles.drawertxt}>History</Text>
                             </TouchableOpacity>
                         </View>
+
+                        <View style={styles.touchableview}>
+                            <TouchableOpacity activeOpacity={50} style={styles.touchabledrawericon} onPress={() => this.props.navigation.navigate("HelpScreen")}>
+                                <Icon name="question-circle" size={20}></Icon>
+                            </TouchableOpacity>
+                            <TouchableOpacity activeOpacity={50} style={this.touchabledrawertxt} onPress={() => this.props.navigation.navigate("HelpScreen")}>
+                                <Text style={styles.drawertxt}>Help</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <View style={styles.touchableview}>
+                            <TouchableOpacity activeOpacity={50} style={styles.touchabledrawericon} onPress={() => this.props.navigation.navigate("AboutScreen")}>
+                                <Icon name="info-circle" size={20}></Icon>
+                            </TouchableOpacity>
+                            <TouchableOpacity activeOpacity={50} style={this.touchabledrawertxt} onPress={() => this.props.navigation.navigate("AboutScreen")}>
+                                <Text style={styles.drawertxt}>About</Text>
+                            </TouchableOpacity>
+                        </View>
                     </ScrollView>
                 </View>
             </View >

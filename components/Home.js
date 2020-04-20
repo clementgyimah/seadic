@@ -43,7 +43,7 @@ export default class Home extends Component {
         return {
             headerTitle: "Seadic",
             headerLeft: <Icon.Button name="align-justify" size={20} color="#25145E" backgroundColor="#FFBE33"
-                onPress={() => navigation.openDrawer()}></Icon.Button>,
+                onPress={() => navigation.openDrawer()}></Icon.Button>,           
             headerStyle: {
                 backgroundColor: '#FFBE33',
             },
@@ -61,7 +61,7 @@ export default class Home extends Component {
             return (
                 <View style={styles.searchbox}>
                     <TextInput placeholder={"Type the word here ..."} placeholderTextColor={"white"} maxLength={20} onSubmitEditing={null}
-                        returnKeyType={"search"} style={styles.inputstyle} onChangeText={(text) => this.setState({ text })} autoFocus={true}>
+                        returnKeyType={"search"} onEndEditing={() => this.props.navigation.navigate('SearchScreen', { searchword: this.state.text.toLowerCase() }) } style={styles.inputstyle} onChangeText={(text) => this.setState({ text })} autoFocus={true}>
                     </TextInput>
                     <View style={styles.buttonview}>
                         <View><TouchableOpacity style={styles.buttonstyle} activeOpacity={50}
