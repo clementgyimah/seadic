@@ -15,19 +15,18 @@ export default class Home extends Component {
         this.state = {
             appbarcond: false,
             text: "",
-            storewords: true,
         }
     }
 
     //the part of code to run first as soon as the app is mounted here
     componentDidMount() {
 
-        if (this.state.storewords == true) {
+	 if (Realm.exists({path: Realm.defaultPath})){
+            console.log("The dictionary file already exist")
+        }
+        else{
             dicwords.dicwords();
         }
-        this.setState({
-            storewords: false
-        })
 
     }
 

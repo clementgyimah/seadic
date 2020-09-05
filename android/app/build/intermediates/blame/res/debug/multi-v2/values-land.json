@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/dj-clemo/Desktop/Programming/Programs/JavaScript/React-native/GITHUB PROJECTS/seadic/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
+            "outputFile": "/home/clemo/Documents/Programming/Programs/JavaScript/React_Native/GITHUB PROJECTS/seadic/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
             "map": [
                 {
-                    "source": "/home/dj-clemo/.gradle/caches/transforms-2/files-2.1/a0cd66f74a506a7b26e934c162fbc05f/res/values-land/values-land.xml",
+                    "source": "/home/clemo/.gradle/caches/transforms-2/files-2.1/53f72cd8ea277d3605e8013837931cc6/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",
